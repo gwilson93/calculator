@@ -1,3 +1,9 @@
+// Initialization of Variables
+let num1 = "";
+let operator = null;
+let num2 = "";
+
+
 // Calculator Functions
 
 function add (a, b) {
@@ -16,7 +22,21 @@ function divide (a,b) {
   return a / b;
 }
 
-// Initialization of Variables
-let num1;
-let operator;
-let num2;
+function operate (operator, a, b) {
+  switch (operator) {
+    case "+":
+      return add(a,b);
+    case "-":
+      return subtract(a,b);
+    case "*":
+      return multiply(a,b);
+    case "/":
+      if (b === 0) {
+        return null
+      } else {
+        return divide(a,b);
+      }
+    default:
+      return null; 
+  }
+}
