@@ -1,0 +1,42 @@
+/* Resets and Variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #192655;
+  --calculator: #3876BF;
+  --pressed-operator: #83effdbb;
+  --pressed-number: #ffffff80;
+  --pressed-delete:#51ff9ab6;
+  --screen: #4e4e4e;
+}
+
+body {
+  background-color: var(--background);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Calculator */
+.calculator {
+  margin: auto;
+  width: 400px;
+  height: 550px;
+  padding: 20px;
+  background-color: var(--calculator);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer */
+.footer {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 20px;
+  font-weight: 700;
+}
