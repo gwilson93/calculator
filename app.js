@@ -3,6 +3,31 @@ let num1 = "";
 let operator = null;
 let num2 = "";
 
+// On Document Load
+addNumberListeners();
+
+// Event Listeners
+
+function addNumberListeners () {
+  let buttons = document.getElementsByTagName("button");
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function() {
+      let value = buttons[i].textContent;
+      if (buttons[i].classList.contains("num")){
+        displayCurrentValue(value);
+      } else if (buttons[i].classList.contains("operator")){
+        
+      }
+  });
+}
+}
+
+// Display Functions
+
+function displayCurrentValue (value) {
+  let currentdisplay = document.querySelector(".currentoperand");
+  currentdisplay.textContent += value; 
+}
 
 // Calculator Functions
 
