@@ -1,7 +1,8 @@
 // Initialization of Variables
-let num1 = "";
+let currentOperand = document.querySelector(".currentoperand");
 let operator = null;
-let num2 = "";
+let lastOperand = document.querySelector(".lastoperand");
+
 
 // On Document Load
 addNumberListeners();
@@ -16,6 +17,8 @@ function addNumberListeners () {
       if (buttons[i].classList.contains("num")){
         displayCurrentValue(value);
       } else if (buttons[i].classList.contains("operator")){
+        cleanCurrentValue(value);
+      } else if (buttons[i].classList.contains("equals")) {
         
       }
   });
@@ -25,8 +28,12 @@ function addNumberListeners () {
 // Display Functions
 
 function displayCurrentValue (value) {
-  let currentdisplay = document.querySelector(".currentoperand");
-  currentdisplay.textContent += value; 
+  currentOperand.textContent += value;
+}
+
+function cleanCurrentValue (value) {
+  lastOperand.textContent = `${currentOperand.textContent} ${value}`;
+  currentOperand.textContent = "";
 }
 
 // Calculator Functions
