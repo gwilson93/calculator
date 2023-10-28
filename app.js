@@ -32,12 +32,16 @@ function appendNumber (number) {
 
 function setOperand(currentOperator) {
   firstOperand = currentDisplay.textContent;
+  currentDisplay.textContent = "";
   operator = currentOperator;
   lastDisplay.textContent = `${firstOperand} ${operator}`;
 }
 
 function evaluate () {
-
+  secondOperand = currentDisplay.textContent;
+  currentDisplay.textContent = operate(operator,firstOperand,secondOperand);
+  lastDisplay.textContent = `${firstOperand} ${operator} ${secondOperand}`;
+  operator = null;
 }
 
 function deleteNumber () {
@@ -45,8 +49,11 @@ function deleteNumber () {
 }
 
 function clearScreen () {
-  
-
+  firstOperand = "";
+  operator = null;
+  secondOperand = "";
+  currentDisplay.textContent = "";
+  lastDisplay.textContent = "";
 }
 
 // Calculator Functions
@@ -66,20 +73,22 @@ function divide (a,b) {
   return a / b;
 }
 
+function modulus(a,b) {
+  return a % b;
+}
+
 function operate (operator, a, b) {
   switch (operator) {
     case "+":
       return add(a,b);
     case "-":
       return subtract(a,b);
-    case "*":
+    case "x":
       return multiply(a,b);
     case "/":
-      if (b === 0) {
-        return null
-      } else {
-        return divide(a,b);
-      }
+      return divide(a,b);
+    case "%":
+      return modulus(a,b);
     default:
       return null; 
   }
