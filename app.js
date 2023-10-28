@@ -16,9 +16,19 @@ numberbtns.forEach((button) => {
   button.addEventListener("click", () => appendNumber(button.textContent));
 })
 
+operatorbtns.forEach((button) => {
+  button.addEventListener("click",() => setOperand(button.textContent));
+})
+
 // Add Helper Functions
 function appendNumber (number) {
   currentDisplay.textContent += number;
+}
+
+function setOperand(currentOperator) {
+  firstOperand = currentDisplay.textContent;
+  operator = currentOperator;
+  lastDisplay.textContent = `${firstOperand} ${operator}`;
 }
 
 // Calculator Functions
