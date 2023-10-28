@@ -20,6 +20,11 @@ operatorbtns.forEach((button) => {
   button.addEventListener("click",() => setOperand(button.textContent));
 })
 
+equalbtn.addEventListener("click",evaluate);
+deletebtn.addEventListener("click",deleteNumber);
+clearbtn.addEventListener("click",clearScreen);
+
+
 // Add Helper Functions
 function appendNumber (number) {
   currentDisplay.textContent += number;
@@ -29,6 +34,19 @@ function setOperand(currentOperator) {
   firstOperand = currentDisplay.textContent;
   operator = currentOperator;
   lastDisplay.textContent = `${firstOperand} ${operator}`;
+}
+
+function evaluate () {
+
+}
+
+function deleteNumber () {
+  currentDisplay.textContent = currentDisplay.textContent.slice(0,-1);
+}
+
+function clearScreen () {
+  
+
 }
 
 // Calculator Functions
