@@ -2,6 +2,7 @@
 let firstOperand = "";
 let operator = null;
 let secondOperand = "";
+let resetScreen = false;
 
 // Add Event Listeners
 const numberbtns = document.querySelectorAll(".num");
@@ -27,6 +28,10 @@ clearbtn.addEventListener("click",clearScreen);
 
 // Add Helper Functions
 function appendNumber (number) {
+  if (resetScreen) {
+    clearScreen();
+    resetScreen = false;
+  }
   currentDisplay.textContent += number;
 }
 
@@ -39,7 +44,12 @@ function setOperand(currentOperator) {
 
 function evaluate () {
   secondOperand = currentDisplay.textContent;
-  currentDisplay.textContent = operate(operator,firstOperand,secondOperand);
+  if (operator === "/" && secondOperand === "0") {
+    currentDisplay.textContent = "You can't divide by zero! Try again!"
+    lastDisplay.textContent = "";
+    return resetScreen = true;
+  }
+  currentDisplay.textContent = Math.round(operate(operator,firstOperand,secondOperand)*1000) / 1000;
   lastDisplay.textContent = `${firstOperand} ${operator} ${secondOperand}`;
   operator = null;
 }
