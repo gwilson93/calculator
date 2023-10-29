@@ -48,6 +48,8 @@ function evaluate () {
     currentDisplay.textContent = "You can't divide by zero! Try again!"
     lastDisplay.textContent = "";
     return resetScreen = true;
+  } else if (operator === null || secondOperand === "") {
+    return clearScreen();
   }
   currentDisplay.textContent = Math.round(operate(operator,firstOperand,secondOperand)*1000) / 1000;
   lastDisplay.textContent = `${firstOperand} ${operator} ${secondOperand}`;
