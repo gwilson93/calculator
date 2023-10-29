@@ -18,12 +18,28 @@ numberbtns.forEach((button) => {
 })
 
 operatorbtns.forEach((button) => {
-  button.addEventListener("click",() => setOperand(button.textContent));
+  button.addEventListener("click",() => setOperator(button.textContent));
 })
 
 equalbtn.addEventListener("click",evaluate);
 deletebtn.addEventListener("click",deleteNumber);
 clearbtn.addEventListener("click",clearScreen);
+document.addEventListener("keydown",(e) => {
+  if (e.key >= 0 && e.key <= 9) {appendNumber (e.key)};
+  if (e.key === '=' || e.key === 'Enter') {evaluate()};
+  if (e.key === 'Backspace') {deleteNumber()};
+  if (e.key === 'Escape') {clearScreen()};
+  if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/' || e.key === '%')
+    {setOperator(convertOperator(e.key))};
+})
+
+function convertOperator(keyboardOperator) {
+  if (keyboardOperator === '/') return '/'
+  if (keyboardOperator === '*') return 'x'
+  if (keyboardOperator === '-') return '-'
+  if (keyboardOperator === '+') return '+'
+  if (keyboardOperator === '%') return '%'
+}
 
 
 // Add Helper Functions
@@ -35,7 +51,7 @@ function appendNumber (number) {
   currentDisplay.textContent += number;
 }
 
-function setOperand(currentOperator) {
+function setOperator(currentOperator) {
   if (operator != null) {evaluate()};
   firstOperand = currentDisplay.textContent;
   currentDisplay.textContent = "";
