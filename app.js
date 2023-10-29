@@ -36,6 +36,7 @@ function appendNumber (number) {
 }
 
 function setOperand(currentOperator) {
+  if (operator != null) {evaluate()};
   firstOperand = currentDisplay.textContent;
   currentDisplay.textContent = "";
   operator = currentOperator;
@@ -43,14 +44,14 @@ function setOperand(currentOperator) {
 }
 
 function evaluate () {
-  secondOperand = currentDisplay.textContent;
-  if (operator === "/" && secondOperand === "0") {
+  if (operator === "/" && currentDisplay.textContent === "0") {
     currentDisplay.textContent = "You can't divide by zero! Try again!"
     lastDisplay.textContent = "";
     return resetScreen = true;
-  } else if (operator === null || secondOperand === "") {
+  } else if (operator === null || currentDisplay.textContent === "") {
     return clearScreen();
   }
+  secondOperand = currentDisplay.textContent;
   currentDisplay.textContent = Math.round(operate(operator,firstOperand,secondOperand)*1000) / 1000;
   lastDisplay.textContent = `${firstOperand} ${operator} ${secondOperand}`;
   operator = null;
